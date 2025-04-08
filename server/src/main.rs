@@ -1,3 +1,5 @@
+// src/main.rs
+
 use clap::Parser;
 use std::io;
 
@@ -19,16 +21,17 @@ enum Commands {
         #[arg(short, long, default_value = "0.0.0.0:8080")]
         listen_addr: String,
         /// Dirección IP y puerto para escuchar los anuncios UDP de los nodos.
+        // 'u' o 'd' podrían ser opciones, pero 'short' sin especificar letra no choca aquí.
         #[arg(short, long, default_value = "0.0.0.0:4000")]
         udp_addr: String,
     },
     /// Inicia un nodo que anuncia sus servicios al balanceador.
     Node {
         /// Dirección IP del balanceador para enviar anuncios UDP.
-        #[arg(short, long)]
+        #[arg(short = 'i', long)] // Usa -i como abreviatura
         balancer_ip: String,
         /// Puerto UDP del balanceador (debe coincidir con el puerto UDP del balanceador).
-        #[arg(short, long, default_value_t = 4000)]
+        #[arg(short = 'p', long, default_value_t = 4000)] // Usa -p como abreviatura
         balancer_port: u16,
     },
 }
