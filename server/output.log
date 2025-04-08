@@ -1,0 +1,687 @@
+2025-04-08 00:38:26.714 [INFO ] [load_balancer] Logging inicializado. Nivel: INFO, Archivo: output.log
+2025-04-08 00:38:26.715 [INFO ] [load_balancer] Iniciando en modo Balanceador...
+2025-04-08 00:38:26.715 [INFO ] [load_balancer::balancer] Configurando cliente HTTP...
+2025-04-08 00:38:26.715 [INFO ] [load_balancer::balancer] Cliente HTTP configurado.
+2025-04-08 00:38:26.715 [INFO ] [load_balancer::balancer] Creando estado de la aplicación...
+2025-04-08 00:38:26.715 [INFO ] [load_balancer::balancer] Estado de la aplicación creado.
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] Iniciando listener UDP...
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] Listener UDP iniciado en segundo plano.
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] Iniciando UI de terminal...
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] UI de terminal iniciada en segundo plano.
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] Iniciando servidor HTTP del balanceador en 0.0.0.0:8080
+2025-04-08 00:38:26.716 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] UI en Terminal activa. Presiona Ctrl+C para detener.
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] Escuchando anuncios UDP en 0.0.0.0:4000
+2025-04-08 00:38:26.717 [INFO ] [actix_server::builder] starting 16 workers
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:26.717 [INFO ] [actix_server::server] Tokio runtime found; starting in existing Tokio runtime
+2025-04-08 00:38:26.717 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:26.717 [INFO ] [actix_server::server] starting service: "actix-web-service-0.0.0.0:8080", workers: 16, listening on: 0.0.0.0:8080
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:26.718 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:28.728 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:28.729 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:28.729 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:28.729 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:28.729 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:28.729 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:30.737 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:30.738 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:30.739 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:30.739 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:30.739 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:32.741 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:32.742 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:32.743 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:34.759 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:34.759 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:34.760 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:34.761 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:34.761 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:34.761 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:34.761 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:35.218 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:38:36.776 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:36.776 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:36.776 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:36.777 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:36.778 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:38.783 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:38.784 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:38.785 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:38.785 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:40.791 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:40.791 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:40.791 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:40.791 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:40.791 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:40.792 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:42.798 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:42.799 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:42.800 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:44.807 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:44.807 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:44.808 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:44.809 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:45.217 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:38:46.820 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:46.820 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:46.820 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:46.821 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:48.829 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:48.830 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:48.831 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:48.831 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:48.831 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:38:50.842 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:50.843 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:50.843 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:50.843 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:50.843 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:52.860 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:38:52.861 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:52.862 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:52.862 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:52.862 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:52.862 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:54.877 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:54.878 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:55.208 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:38:56.894 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:56.895 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:56.895 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:56.895 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:56.895 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:56.895 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:56.896 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:58.904 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:38:58.905 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:00.911 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:00.911 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:00.911 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:00.911 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:00.911 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:00.912 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:02.914 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:02.915 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:04.924 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:04.925 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:04.926 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:04.926 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:04.926 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:05.210 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:39:06.939 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:06.940 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:06.941 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:06.941 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:06.941 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:08.952 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:08.953 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:08.954 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:08.954 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:08.954 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:10.964 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:10.965 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:10.966 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:10.966 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:10.966 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:10.966 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:12.978 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:12.978 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:12.978 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:12.978 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:12.978 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:12.979 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:39:14.982 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:14.983 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:14.983 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:14.983 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:14.983 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:15.220 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:39:16.992 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:16.992 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:16.992 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:16.992 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:16.993 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:19.006 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:19.006 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:19.006 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:19.006 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:19.007 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:21.019 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:21.020 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:21.020 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:21.020 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:21.020 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:21.020 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:39:23.023 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:23.024 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:23.024 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:23.024 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:23.024 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:25.030 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:25.031 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:25.032 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:25.218 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:39:27.043 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:27.043 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:27.043 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:27.043 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:27.044 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:29.055 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:39:29.056 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:29.056 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:29.056 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:29.056 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:29.056 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:31.065 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:31.066 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:31.066 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:31.066 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:31.066 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:31.066 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:33.075 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:33.075 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:33.075 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:33.075 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:33.075 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:33.076 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:35.082 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:35.082 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:35.082 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:35.083 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:35.084 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:35.209 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:39:37.097 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:37.097 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:37.097 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:37.097 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:37.098 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:39.113 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:39.114 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:41.123 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:41.124 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:41.125 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:41.125 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:41.125 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:43.133 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       7s ago    
+2025-04-08 00:39:43.134 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:43.134 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:43.134 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:43.134 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:43.134 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:45.136 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:45.136 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:45.136 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       9s ago    
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:45.137 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:45.138 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:45.138 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:45.215 [INFO ] [load_balancer::balancer] UDP Listener: Recibido anuncio de ID peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 (URL efectiva http://127.0.0.1:1235/v1/chat/completions) para lmstudio desde 127.0.0.1:60189
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:47.140 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       1s ago    
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:47.141 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:49.146 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:49.146 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:49.146 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:49.146 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       3s ago    
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:49.147 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:51.154 [INFO ] [load_balancer::balancer] == Estado del Balanceador de Cargas ==
+2025-04-08 00:39:51.154 [INFO ] [load_balancer::balancer] API Global escuchando en: http://0.0.0.0:8080
+2025-04-08 00:39:51.154 [INFO ] [load_balancer::balancer] Timeout cola peticiones: 30s
+2025-04-08 00:39:51.154 [INFO ] [load_balancer::balancer] 
+-- LM Studio Nodes --
+2025-04-08 00:39:51.154 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] peterpro-8b81acbd-c00d-451c-b22f-48575649ea88 http://127.0.0.1:1235/v1/chat/completions                    Available       5s ago    
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] 
+-- Ollama Nodes --
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] Node ID                                       Service URL                                                  State           Last Seen 
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] ---------------------------------------------------------------------------------------------------------------------------------------
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] (No nodes registered)
+2025-04-08 00:39:51.155 [INFO ] [load_balancer::balancer] 
+Ctrl+C para detener.
+2025-04-08 00:39:52.307 [INFO ] [actix_server::server] SIGINT received; starting forced shutdown
+2025-04-08 00:39:52.307 [INFO ] [actix_server::accept] accept thread stopped
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker
+2025-04-08 00:39:52.307 [INFO ] [actix_server::worker] shutting down idle worker

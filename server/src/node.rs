@@ -3,6 +3,7 @@ use std::time::Duration;
 use tokio::net::UdpSocket;
 use tokio::time::interval;
 use uuid::Uuid;
+use log::{info, warn, error};
 
 fn prompt_for_url(service_name: &str) -> Option<String> {
     print!("Introduce la URL completa para {} (ej: http://localhost:1234/v1/api) o deja en blanco si no aplica: ", service_name);
@@ -16,7 +17,7 @@ fn prompt_for_url(service_name: &str) -> Option<String> {
         if url.starts_with("http://") || url.starts_with("https://") {
              Some(url.to_string())
         } else {
-            eprintln!("URL inválida para {}. Debe empezar con http:// o https://. Ignorando.", service_name);
+            warn!("URL inválida para {}. Debe empezar con http:// o https://. Ignorando.", service_name);
             None
         }
     }
@@ -29,7 +30,7 @@ async fn udp_broadcast_service(
     balancer_target: String,
 ) -> io::Result<()> {
     let socket = UdpSocket::bind("0.0.0.0:0").await?;
-    println!(
+    info!(
         "Anunciando {} (ID: {}) en {} al balanceador {}",
         service_name, unique_node_id, service_url, balancer_target
     );
@@ -41,7 +42,7 @@ async fn udp_broadcast_service(
         ticker.tick().await;
         match socket.send_to(msg.as_bytes(), &balancer_target).await {
             Ok(_) => {},
-            Err(e) => eprintln!(
+            Err(e) => error!(
                 "Error al enviar broadcast UDP para {} (ID: {}): {}",
                 service_name, unique_node_id, e
             ),
@@ -55,13 +56,13 @@ pub async fn run_node(balancer_ip: &str, balancer_port: u16) -> io::Result<()> {
         .unwrap_or_else(|| "unknown-host".to_string());
     let node_uuid = Uuid::new_v4().to_string();
     let unique_node_id = format!("{}-{}", hostname, node_uuid);
-    println!("Nodo iniciado con ID único: {}", unique_node_id);
+    info!("Nodo iniciado con ID único: {}", unique_node_id);
 
     let lm_studio_url = prompt_for_url("LM Studio");
     let ollama_url = prompt_for_url("Ollama");
 
     if lm_studio_url.is_none() && ollama_url.is_none() {
-        eprintln!("No se especificó ninguna URL de servicio. El nodo no anunciará nada.");
+        warn!("No se especificó ninguna URL de servicio. El nodo no anunciará nada.");
         return Ok(());
     }
 
@@ -84,14 +85,14 @@ pub async fn run_node(balancer_ip: &str, balancer_port: u16) -> io::Result<()> {
         }));
     }
 
-    println!("Nodo anunciando servicios con ID {} cada 10 segundos. Presiona Ctrl+C para detener.", unique_node_id);
+    info!("Nodo anunciando servicios con ID {} cada 10 segundos. Presiona Ctrl+C para detener.", unique_node_id);
 
     match tokio::signal::ctrl_c().await {
         Ok(()) => {
-            println!("\nCerrando nodo...");
+            info!("Cerrando nodo...");
         }
         Err(err) => {
-            eprintln!("Error al escuchar señal de interrupción: {}", err);
+            error!("Error al escuchar señal de interrupción: {}", err);
         }
     }
 
