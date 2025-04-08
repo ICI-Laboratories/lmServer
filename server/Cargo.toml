@@ -8,4 +8,7 @@ actix-web = "4"
 reqwest = { version = "0.11", features = ["json"] }
 tokio = { version = "1", features = ["full"] }
 clap = { version = "4", features = ["derive"] } # Añadir clap
-serde_json = "1.0" # Añadido para posible manejo futuro de JSON si es necesario, aunque ahora pasamos Bytes
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0" # Ídem
+hostname = "0.3"
+uuid = { version = "1", features = ["v4"] }

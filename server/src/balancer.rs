@@ -1,5 +1,3 @@
-// src/balancer.rs
-
 use actix_web::{post, web, App, HttpResponse, HttpServer, Responder};
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
@@ -7,93 +5,156 @@ use std::time::{Duration, Instant};
 use tokio::net::UdpSocket;
 use tokio::time::sleep;
 
-#[derive(Clone, Debug)]
-pub enum NodeState {
+#[derive(Clone, Debug)] // NodeHealth YA implementa Clone, ¡perfecto!
+pub enum NodeHealth {
     Available,
     Busy,
     Failed(Instant),
 }
 
+#[derive(Clone, Debug)]
+pub struct NodeInfo {
+    state: NodeHealth,
+    service_url: String,
+    last_seen: Instant,
+}
+
 pub struct AppState {
-    lm_studio_nodes: Arc<RwLock<HashMap<String, NodeState>>>,
-    ollama_nodes: Arc<RwLock<HashMap<String, NodeState>>>,
+    lm_studio_nodes: Arc<RwLock<HashMap<String, NodeInfo>>>,
+    ollama_nodes: Arc<RwLock<HashMap<String, NodeInfo>>>,
     client: reqwest::Client,
     listen_addr: String,
+    queue_timeout: Duration,
+    queue_poll_interval: Duration,
 }
 
 impl AppState {
     fn find_and_occupy_node(
-        nodes_lock: &Arc<RwLock<HashMap<String, NodeState>>>,
-    ) -> Option<String> {
+        nodes_lock: &Arc<RwLock<HashMap<String, NodeInfo>>>,
+    ) -> Option<(String, String)> {
+        println!(" -> Entrando a find_and_occupy_node...");
         let mut nodes = nodes_lock.write().unwrap();
-        if let Some((node_url, state)) = nodes
+
+        let found_node = nodes
             .iter_mut()
-            .find(|(_, s)| matches!(s, NodeState::Available))
-        {
-            *state = NodeState::Busy;
-            Some(node_url.clone())
+            .find(|(_id, info)| {
+                 println!("    -> Verificando nodo ID: {} (URL: {}) - Estado: {:?}", _id, info.service_url, info.state);
+                 matches!(info.state, NodeHealth::Available)
+            });
+
+        if let Some((unique_id, node_info)) = found_node {
+            println!("    -> Nodo disponible encontrado ID: {}. Marcando como Busy.", unique_id);
+            node_info.state = NodeHealth::Busy;
+            Some((unique_id.clone(), node_info.service_url.clone()))
         } else {
+            println!("    -> No se encontró ningún nodo disponible.");
             None
         }
     }
 
+    // La firma no necesita cambiar porque NodeHealth implementa Clone
     fn update_node_state(
-        nodes_lock: &Arc<RwLock<HashMap<String, NodeState>>>,
-        node_url: &str,
-        new_state: NodeState,
+        nodes_lock: &Arc<RwLock<HashMap<String, NodeInfo>>>,
+        unique_node_id: &str,
+        new_health: NodeHealth, // Recibe la propiedad
     ) {
         let mut nodes = nodes_lock.write().unwrap();
-        if let Some(state) = nodes.get_mut(node_url) {
-            *state = new_state;
+        if let Some(node_info) = nodes.get_mut(unique_node_id) {
+             println!("  -> Actualizando estado del nodo ID {} (URL: {}) a: {:?}", unique_node_id, node_info.service_url, new_health);
+            node_info.state = new_health; // Asigna el valor movido
+        } else {
+             println!("  -> Intento de actualizar estado de nodo ID {} fallido (nodo no encontrado).", unique_node_id);
         }
     }
 }
 
 async fn forward_request(
     client: &reqwest::Client,
-    node_url: &str,
+    node_service_url: &str,
     req_body: web::Bytes,
 ) -> Result<reqwest::Response, reqwest::Error> {
-    client.post(node_url).body(req_body).send().await
+     println!("  -> forward_request: Enviando POST a {} con body size: {}", node_service_url, req_body.len());
+     client.post(node_service_url)
+         .header(reqwest::header::CONTENT_TYPE, "application/json")
+         .body(req_body)
+         .send()
+         .await
 }
 
 async fn handle_service_request(
     service_name: &str,
-    nodes_lock: Arc<RwLock<HashMap<String, NodeState>>>,
+    nodes_lock: Arc<RwLock<HashMap<String, NodeInfo>>>,
     client: web::Data<reqwest::Client>,
     req_body: web::Bytes,
+    queue_timeout: Duration,
+    queue_poll_interval: Duration,
 ) -> impl Responder {
-    let node_url = match AppState::find_and_occupy_node(&nodes_lock) {
-         Some(url) => url,
-         None => {
-             return HttpResponse::ServiceUnavailable()
-                 .body(format!("No hay nodos {} disponibles", service_name));
-         }
-     };
+    println!("Balancer handle_service_request para '{}' RECIBIDO.", service_name);
+    println!("  -> Tamaño del body recibido: {} bytes", req_body.len());
 
-    match forward_request(&client, &node_url, req_body).await {
+    if req_body.len() > 0 && req_body.len() < 1024 {
+         match std::str::from_utf8(&req_body) {
+             Ok(body_str) => println!("  -> Contenido del body recibido: {}", body_str),
+             Err(_) => println!("  -> Contenido del body recibido: (No es UTF-8 válido o muy largo)"),
+         }
+    } else if req_body.len() == 0 {
+         println!("  -> Contenido del body recibido: ¡¡¡VACÍO!!!");
+    }
+
+
+    let start_time = Instant::now();
+
+    let (unique_node_id, node_service_url) = loop {
+        if let Some(found) = AppState::find_and_occupy_node(&nodes_lock) {
+            println!("  -> Nodo encontrado y ocupado: ID {}, URL {}", found.0, found.1);
+            break found;
+        }
+
+        if start_time.elapsed() > queue_timeout {
+            println!("  -> ERROR: No se encontraron nodos disponibles para '{}' dentro del tiempo de espera ({}s).", service_name, queue_timeout.as_secs());
+            return HttpResponse::ServiceUnavailable().body(format!(
+                "No hay nodos {} disponibles (timeout {}s)",
+                service_name,
+                queue_timeout.as_secs()
+            ));
+        }
+
+        println!("  -> No hay nodos {} disponibles. Esperando {}ms...", service_name, queue_poll_interval.as_millis());
+        sleep(queue_poll_interval).await;
+    };
+
+    println!("  -> Intentando reenviar petición a ID: {}, URL: {}", unique_node_id, node_service_url);
+
+    match forward_request(&client, &node_service_url, req_body).await {
         Ok(response) => {
             let status = response.status();
+            println!("  -> Respuesta recibida del nodo ID {} (URL {}) con estado: {}", unique_node_id, node_service_url, status);
             match response.bytes().await {
                 Ok(body_bytes) => {
-                    if status.is_success() {
-                        AppState::update_node_state(&nodes_lock, &node_url, NodeState::Available);
+                    let new_health = if status.is_success() {
+                        NodeHealth::Available
                     } else {
-                         eprintln!("Nodo {} respondió con estado no exitoso: {}", node_url, status);
-                         AppState::update_node_state(&nodes_lock, &node_url, NodeState::Failed(Instant::now()));
-                    }
+                         eprintln!("  -> Nodo ID {} respondió con estado no exitoso: {}", unique_node_id, status);
+                         NodeHealth::Failed(Instant::now())
+                    };
+                    // --- LA CORRECCIÓN ESTÁ AQUÍ ---
+                    AppState::update_node_state(&nodes_lock, &unique_node_id, new_health.clone()); // Clonar antes de mover
+                    // --- FIN DE LA CORRECCIÓN ---
+                    println!("  -> Marcando nodo ID {} como {:?}.", unique_node_id, new_health); // Ahora 'new_health' sigue siendo válida aquí
                     HttpResponse::build(status).body(body_bytes)
                 }
                 Err(e) => {
-                     eprintln!("Error al leer la respuesta del nodo {}: {}", node_url, e);
-                     AppState::update_node_state(&nodes_lock, &node_url, NodeState::Failed(Instant::now()));
+                     eprintln!("  -> Error al leer la respuesta del nodo ID {}: {}", unique_node_id, e);
+                     AppState::update_node_state(&nodes_lock, &unique_node_id, NodeHealth::Failed(Instant::now()));
+                     println!("  -> Marcando nodo ID {} como Failed.", unique_node_id);
                      HttpResponse::InternalServerError().body(format!("Error leyendo respuesta de {}", service_name))
                 }
             }
         }
         Err(e) => {
-             eprintln!("Error al reenviar la solicitud al nodo {}: {}", node_url, e);
-             AppState::update_node_state(&nodes_lock, &node_url, NodeState::Failed(Instant::now()));
+             eprintln!("  -> Error al reenviar la solicitud al nodo ID {}: {}", unique_node_id, e);
+             AppState::update_node_state(&nodes_lock, &unique_node_id, NodeHealth::Failed(Instant::now()));
+             println!("  -> Marcando nodo ID {} como Failed.", unique_node_id);
             HttpResponse::InternalServerError()
                 .body(format!("Error reenviando a {}: {}", service_name, e))
         }
@@ -105,8 +166,16 @@ async fn lm_studio_handler(
     state: web::Data<AppState>,
     req_body: web::Bytes,
 ) -> impl Responder {
-    let client_ref = web::Data::new(state.client.clone());
-    handle_service_request("LM Studio", state.lm_studio_nodes.clone(), client_ref, req_body).await
+     println!("Balancer /lmstudio handler RECIBIDO request. Body size: {}", req_body.len());
+     let client_ref = web::Data::new(state.client.clone());
+     handle_service_request(
+         "LM Studio",
+         state.lm_studio_nodes.clone(),
+         client_ref,
+         req_body,
+         state.queue_timeout,
+         state.queue_poll_interval
+     ).await
 }
 
 #[post("/ollama")]
@@ -114,8 +183,16 @@ async fn ollama_handler(
     state: web::Data<AppState>,
     req_body: web::Bytes,
 ) -> impl Responder {
+     println!("Balancer /ollama handler RECIBIDO request. Body size: {}", req_body.len());
      let client_ref = web::Data::new(state.client.clone());
-     handle_service_request("Ollama", state.ollama_nodes.clone(), client_ref, req_body).await
+     handle_service_request(
+        "Ollama",
+        state.ollama_nodes.clone(),
+        client_ref,
+        req_body,
+        state.queue_timeout,
+        state.queue_poll_interval
+    ).await
 }
 
 async fn udp_discovery_listener(
@@ -130,39 +207,40 @@ async fn udp_discovery_listener(
         match socket.recv_from(&mut buf).await {
              Ok((len, src_addr)) => {
                 let msg = String::from_utf8_lossy(&buf[..len]);
-                let parts: Vec<&str> = msg.trim().splitn(3, ',').collect();
+                let parts: Vec<&str> = msg.trim().splitn(4, ',').collect();
 
-                if parts.len() == 3 && parts[0] == "DISCOVER" {
-                    let service = parts[1];
-                    let node_url = parts[2].to_string();
+                if parts.len() == 4 && parts[0] == "DISCOVER" {
+                    let service_type = parts[1];
+                    let unique_node_id = parts[2].to_string();
+                    let service_url = parts[3].to_string();
 
-                    println!("Recibido anuncio de {} para {} desde {}", node_url, service, src_addr);
+                    println!("UDP Listener: Recibido anuncio de ID {} (URL {}) para {} desde {}", unique_node_id, service_url, service_type, src_addr);
 
-                    let mut nodes_to_update : Option<Arc<RwLock<HashMap<String, NodeState>>>> = None;
-
-                    match service {
-                        "lmstudio" => {
-                           nodes_to_update = Some(app_state.lm_studio_nodes.clone());
-                        }
-                        "ollama" => {
-                            nodes_to_update = Some(app_state.ollama_nodes.clone());
-                        }
+                    let nodes_lock = match service_type {
+                        "lmstudio" => Some(app_state.lm_studio_nodes.clone()),
+                        "ollama" => Some(app_state.ollama_nodes.clone()),
                         _ => {
-                            eprintln!("Mensaje UDP de descubrimiento con servicio desconocido: {}", msg);
+                            eprintln!("UDP Listener: Mensaje UDP de descubrimiento con servicio desconocido: {}", msg);
+                            None
                         }
-                    }
+                    };
 
-                    if let Some(nodes_lock) = nodes_to_update {
-                         let mut nodes = nodes_lock.write().unwrap();
-                         nodes.insert(node_url, NodeState::Available);
+                    if let Some(lock) = nodes_lock {
+                         let mut nodes = lock.write().unwrap();
+                         println!("UDP Listener: Añadiendo/Actualizando nodo ID {} para servicio {} como Available.", unique_node_id, service_type);
+                         nodes.insert(unique_node_id, NodeInfo {
+                             state: NodeHealth::Available,
+                             service_url: service_url,
+                             last_seen: Instant::now(),
+                         });
                     }
 
                 } else {
-                     eprintln!("Mensaje UDP mal formado recibido de {}: {}", src_addr, msg);
+                     eprintln!("UDP Listener: Mensaje UDP mal formado recibido de {} (Esperado 'DISCOVER,<svc>,<id>,<url>'): {}", src_addr, msg);
                 }
             }
             Err(e) => {
-                 eprintln!("Error al recibir mensaje UDP: {}. Reiniciando escucha.", e);
+                 eprintln!("UDP Listener: Error al recibir mensaje UDP: {}. Reiniciando escucha.", e);
                  sleep(Duration::from_secs(1)).await;
             }
         }
@@ -171,33 +249,39 @@ async fn udp_discovery_listener(
 
 async fn terminal_ui(app_state: web::Data<AppState>) {
     let listen_addr = app_state.listen_addr.clone();
+
     loop {
         print!("\x1B[2J\x1B[1;1H");
         println!("== Estado del Balanceador de Cargas ==");
         println!("API Global escuchando en: http://{}", listen_addr);
+        println!("Timeout cola peticiones: {}s", app_state.queue_timeout.as_secs());
 
         let now = Instant::now();
         let _failure_threshold = Duration::from_secs(60);
 
-        let print_nodes = |service_name: &str, nodes_lock: &Arc<RwLock<HashMap<String, NodeState>>>| {
+        let print_nodes = |service_name: &str, nodes_lock: &Arc<RwLock<HashMap<String, NodeInfo>>>| {
             let nodes = nodes_lock.read().unwrap();
             println!("\n-- {} Nodes --", service_name);
-            println!("{:<60} {:<15}", "Node URL", "State");
-            println!("{}", "-".repeat(76));
+            println!("{:<45} {:<60} {:<15} {:<10}", "Node ID", "Service URL", "State", "Last Seen");
+            println!("{}", "-".repeat(135));
 
             if nodes.is_empty() {
                 println!("(No nodes registered)");
             } else {
-                for (url, state) in nodes.iter() {
-                    let state_str = match state {
-                        NodeState::Available => "Available".to_string(),
-                        NodeState::Busy => "Busy".to_string(),
-                        NodeState::Failed(failed_time) => {
-                            let elapsed = now.duration_since(*failed_time);
-                            format!("Failed ({}s)", elapsed.as_secs())
+                let mut sorted_nodes: Vec<_> = nodes.iter().collect();
+                sorted_nodes.sort_by_key(|(id, _)| *id);
+
+                for (id, info) in sorted_nodes {
+                    let state_str = match info.state {
+                        NodeHealth::Available => "Available".to_string(),
+                        NodeHealth::Busy => "Busy".to_string(),
+                        NodeHealth::Failed(failed_time) => {
+                            let elapsed = now.duration_since(failed_time);
+                             format!("Failed ({}s)", elapsed.as_secs())
                         }
                     };
-                    println!("{:<60} {:<15}", url, state_str);
+                    let seen_ago = now.duration_since(info.last_seen).as_secs();
+                    println!("{:<45} {:<60} {:<15} {:<10}", id, info.service_url, state_str, format!("{}s ago", seen_ago));
                 }
             }
         };
@@ -207,36 +291,50 @@ async fn terminal_ui(app_state: web::Data<AppState>) {
 
         println!("\nCtrl+C para detener.");
 
-        sleep(Duration::from_secs(5)).await;
+        sleep(Duration::from_secs(2)).await;
     }
 }
 
 pub async fn run_balancer(listen_addr: &str, udp_addr: &str) -> std::io::Result<()> {
+    println!("Configurando cliente HTTP...");
     let http_client = reqwest::Client::builder()
-        .timeout(Duration::from_secs(60))
+        .timeout(Duration::from_secs(300))
         .connect_timeout(Duration::from_secs(10))
         .build()
         .expect("No se pudo crear el cliente HTTP");
+    println!("Cliente HTTP configurado.");
 
+    let queue_timeout = Duration::from_secs(30);
+    let queue_poll_interval = Duration::from_millis(200);
+
+
+    println!("Creando estado de la aplicación...");
     let app_state = web::Data::new(AppState {
         lm_studio_nodes: Arc::new(RwLock::new(HashMap::new())),
         ollama_nodes: Arc::new(RwLock::new(HashMap::new())),
         client: http_client,
         listen_addr: listen_addr.to_string(),
+        queue_timeout,
+        queue_poll_interval,
     });
+    println!("Estado de la aplicación creado.");
 
+    println!("Iniciando listener UDP...");
     let udp_listener_state = app_state.clone();
     let udp_addr_owned = udp_addr.to_string();
     tokio::spawn(async move {
         if let Err(e) = udp_discovery_listener(udp_addr_owned, udp_listener_state).await {
-            eprintln!("Error crítico en el listener UDP: {}. El descubrimiento de nodos se ha detenido.", e);
+            eprintln!("CRITICAL: Error en el listener UDP: {}. El descubrimiento de nodos se ha detenido.", e);
         }
     });
+    println!("Listener UDP iniciado en segundo plano.");
 
+    println!("Iniciando UI de terminal...");
     let ui_state = app_state.clone();
     tokio::spawn(async move {
         terminal_ui(ui_state).await;
     });
+    println!("UI de terminal iniciada en segundo plano.");
 
     println!("Iniciando servidor HTTP del balanceador en {}", listen_addr);
     println!("UI en Terminal activa. Presiona Ctrl+C para detener.");
