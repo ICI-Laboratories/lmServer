@@ -1,129 +1,51 @@
-# ⚙️ Sistema de Balanceo de Carga y Registro de Nodos vía UDP/HTTP
+# LMServ Go
 
-Este proyecto implementa una arquitectura simple pero poderosa para el descubrimiento de servicios y balanceo de carga utilizando HTTP y UDP.
+LMServ ahora queda orientado a un orquestador nativo en Go para contenedores de inferencia local con separación explícita entre tráfico de baja y alta latencia.
 
-## 🧩 Componentes Principales
+## Arquitectura
 
-- **Balancer**: Balanceador de carga que escucha solicitudes HTTP de clientes y anuncios UDP de nodos.
-- **Node**: Nodo que anuncia sus servicios (LM Studio u Ollama) al balanceador vía UDP.
+- `cmd/lmserv`: binario principal.
+- `internal/api`: gateway HTTP con `/health` y `/v1/inference`.
+- `internal/orchestrator`: scheduler, colas, clasificación de peticiones y control de contenedores Docker.
+- `internal/metrics`: registro JSON de `queue_wait_ms`, `ttft_ms`, `generation_ms` y `total_ms`.
 
----
+## Objetivo de despliegue
 
-## 🚀 Uso General
+El código está preparado para el host objetivo Fedora Workstation con ROCm, GPU AMD RDNA2 y Docker accesible por socket local. La Mac de desarrollo no necesita ROCm; aquí sólo se deja la implementación y la parametrización para el host final.
 
-Después de compilar con:
+Cada contenedor lanzado por el orquestador inyecta:
 
-```bash
-cargo build --release
-```
+- `HSA_OVERRIDE_GFX_VERSION=10.3.0`
+- `GroupAdd: video, render`
+- dispositivos `/dev/kfd` y `/dev/dri`
 
-O ejecutar directamente con:
+## Política de colas
 
-```bash
-cargo run -- <SUBCOMANDO> [OPCIONES]
-```
+- Peticiones con imágenes codificadas en base64 se clasifican como `high_latency`.
+- Peticiones de solo texto se clasifican como `low_latency`.
+- Cada clase tiene su propio presupuesto de VRAM, su propia cola y sus propios workers.
+- Los contenedores inactivos pueden pausarse o destruirse según el perfil configurado.
 
-Donde `<SUBCOMANDO>` puede ser:
+## Variables recomendadas
 
-- `balancer`
-- `node`
+La plantilla base está en [lmserv.example.env](/Users/waltermata/icilabs/lmServer/lmserv.example.env).
 
----
-
-## 🔧 Opciones Globales (para cualquier subcomando)
-
-| Opción                      | Propósito                                         | Ejemplo                           | Por defecto       |
-|----------------------------|---------------------------------------------------|------------------------------------|-------------------|
-| `--log-level <LEVEL>`      | Nivel de log: `trace`, `debug`, `info` | `--log-level debug`         | `info`            |
-| `--log-file <FILE>`        | Nombre del archivo de logs                        | `--log-file log.txt`               | `output.log`      |
-
----
-
-## 🧠 Subcomando: `balancer`
-
-Inicia el modo balanceador, que escucha tanto HTTP como UDP.
-
-| Opción                        | Propósito                                               | Ejemplo                              | Por defecto        |
-|-----------------------------|---------------------------------------------------------|--------------------------------------|--------------------|
-| `--listen-addr`, `-l`       | IP:PUERTO para servidor HTTP                            | `-l 0.0.0.0:8081`                    | `0.0.0.0:8080`     |
-| `--udp-addr`, `-u`          | IP:PUERTO para recepción de anuncios UDP                | `-u 0.0.0.0:5000`                    | `0.0.0.0:4000`     |
-
----
-
-## 🌐 Subcomando: `node`
-
-Inicia el nodo, que envía anuncios UDP al balanceador.
-
-| Opción                          | Propósito                                                 | Ejemplo                          | Por defecto    |
-|-------------------------------|-----------------------------------------------------------|----------------------------------|----------------|
-| `--balancer-ip`, `-i`         | IP del balanceador (requerido)                            | `-i 192.168.1.100`               | *Requerido*    |
-| `--balancer-port`, `-p`       | Puerto UDP del balanceador                                | `-p 5000`                        | `4000`         |
-
----
-
-## 💡 Ejemplos de Uso
-
-### Balancer con configuración por defecto
-```bash
-cargo run -- balancer
-```
-
-### Balancer con puertos y log personalizados
-```bash
-cargo run -- balancer -l 0.0.0.0:9090 -u 0.0.0.0:5000 --log-level debug --log-file balancer.log
-```
-
-### Node conectándose al balanceador local
-```bash
-cargo run -- node -i 127.0.0.1
-```
-
-### Node conectado a balanceador remoto
-```bash
-cargo run -- node -i 192.168.1.100 -p 5000 --log-file node_remoto.log
-```
-
-### Node y Balancer en la misma máquina (diferentes puertos)
-```bash
-# Terminal 1 - Balancer
-cargo run -- balancer -l 0.0.0.0:8181 -u 0.0.0.0:4141 --log-level trace --log-file bal.log
-
-# Terminal 2 - Node
-cargo run -- node -i 127.0.0.1 -p 4141 --log-level trace --log-file node.log
-```
-
----
-
-## 🆘 Ayuda Rápida
-
-Puedes consultar la ayuda en cualquier momento con:
+## Arranque esperado en Fedora
 
 ```bash
-cargo run -- --help
+cp lmserv.example.env .env
+export $(grep -v '^#' .env | xargs)
+go mod tidy
+go run ./cmd/lmserv --listen-addr :8080
 ```
 
----
+## Endpoints
 
-## 📄 Licencia
+- `GET /health`
+- `POST /v1/inference`
 
-MIT License
+`/v1/inference` reenvía el JSON original al backend correspondiente y devuelve el stream o cuerpo HTTP del contenedor seleccionado.
 
-Copyright (c) 2025 ICI Laboratories
+## Estado del repositorio
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
-in the Software without restriction, including without limitation the rights  
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell      
-copies of the Software, and to permit persons to whom the Software is         
-furnished to do so, subject to the following conditions:                       
-
-The above copyright notice and this permission notice shall be included in    
-all copies or substantial portions of the Software.                           
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR    
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,      
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE   
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER        
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN     
-THE SOFTWARE.
+La carpeta `server/` contiene la implementación anterior en Rust y queda como referencia histórica del comportamiento previo de balanceo/proxy.
